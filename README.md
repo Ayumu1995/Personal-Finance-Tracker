@@ -27,7 +27,6 @@ This project was created as the final project for Tamwood's Course 3. It is a Pe
 
 ```
 FinalProject
-├── BraJapAly_Project_Log.xlsx
 ├── README.md
 ├── example.png
 ├── index.html
