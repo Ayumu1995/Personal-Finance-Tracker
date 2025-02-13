@@ -220,6 +220,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
          const option = document.createElement("option");
          option.value = monthValue;
+         // convert date format to ex) "March 2024"
          option.textContent = new Intl.DateTimeFormat("en-US", {
             year: "numeric",
             month: "long",
