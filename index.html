@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Personal Finance Tracker</title>
+      <link rel="stylesheet" href="./style.css " />
+   </head>
+
+   <body>
+      <header id="header">
+         <div class="wrapper">
+            <a href="" class="logo">Personal Finance Tracker</a>
+            <nav class="menu">
+               <ul>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a class="cta" href="">Contact</a></li>
+               </ul>
+            </nav>
+         </div>
+         <div class="hamburger">
+            <nav>
+               <span></span>
+               <span></span>
+            </nav>
+         </div>
+      </header>
+
+      <div class="container">
+         <div class="container-top">
+            <!-- Dark mode -->
+            <div class="dark-mode">
+               <h4>Dark Mode</h4>
+               <input type="checkbox" id="checkbox" />
+               <label for="checkbox">
+                  <div class="icon"></div>
+               </label>
+            </div>
+
+            <!-- Select Month  -->
+            <div id="month-select">
+               <label for="month-selector"><h4 style="display: inline">Select Month:</h4></label>
+               <select id="month-selector"></select>
+            </div>
+         </div>
+
+         <div class="left-column">
+            <!-- income section -->
+            <div id="income-section" class="section">
+               <h3>Income</h3>
+               <div class="input-group">
+                  <label for="monthly-income">Monthly Income</label>
+                  <input type="number" id="monthly-income" placeholder="Enter your income" />
+               </div>
+            </div>
+
+            <!-- Budget summary section -->
+            <div id="budget-summary" class="section">
+               <h3>Budget Summary</h3>
+               <div class="summary-content">
+                  <p>Total Expense: <span id="total-expenses">$0</span></p>
+                  <p>Remaining Budget: <span id="remaining-budget">$0</span></p>
+               </div>
+               <div id="budget-chart"></div>
+            </div>
+         </div>
+         <div id="right-column" class="right-column">
+            <!-- Expense section -->
+            <div id="expense-section" class="section">
+               <h3>Expenses</h3>
+               <div class="expense-list">
+                  <div class="expense-category" draggable="true">
+                     <span>Rent</span>
+                     <input type="number" placeholder="Amount" />
+                  </div>
+                  <div class="expense-category" draggable="true">
+                     <span>Groceries</span>
+                     <input type="number" placeholder="Amount" />
+                  </div>
+                  <div class="expense-category" draggable="true">
+                     <span>Utilities</span>
+                     <input type="number" placeholder="Amount" />
+                  </div>
+               </div>
+               <button id="add-expense">Add New Expense</button>
+            </div>
+         </div>
+      </div>
+
+      <footer id="footer">
+         <div class="footer-content">
+            <a href="" class="logo">Personal Finance Tracker</a>
+            <p>©2025 Personal Finance Tracker. All Rights Reserved.</p>
+         </div>
+      </footer>
+
+      <!-- highcharts -->
+      <script src="https://code.highcharts.com/highcharts.js"></script>
+      <!-- <script src="https://code.highcharts.com/module/exporting.js"></script> -->
+      <!-- <script src="https://code.highcharts.com/module/accessibility.js "></script> -->
+      <script src="./script.js"></script>
+   </body>
+</html>
