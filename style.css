@@ -129,6 +129,12 @@ body {
    padding: 0 3rem;
 }
 
+#bottom-chart {
+   width: 100%;
+   margin-bottom: 3rem;
+   grid-column: span 2;
+}
+
 .dark-mode {
    display: flex;
    margin-top: 2em;
@@ -193,6 +199,7 @@ body {
 #month-select {
    margin-top: 2rem;
 }
+
 #month-selector {
    height: 30px;
    margin-left: 5px;

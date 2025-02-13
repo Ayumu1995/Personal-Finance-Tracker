@@ -186,6 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       updateBudget();
       loadChart();
+      loadLineChart();
    }
 
    // Function to save current budget state to local storage
@@ -200,6 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const budgetData = { income: monthlyIncome.value, expenses: expenses };
       localStorage.setItem(`budgetData_${selectedMonth}`, JSON.stringify(budgetData));
       loadChart();
+      loadLineChart();
    }
 
    // Initialize the app by loading saved data
@@ -239,5 +241,63 @@ document.addEventListener("DOMContentLoaded", function () {
       //  ensures that the month is always two digits by adding a leading "0" ex. January is 01
       return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`;
    }
+
+   function getMonthlyData() {
+      const monthlyData = [];
+      const now = new Date();
+
+      for (let i = 11; i >= 0; i--) {
+         const date = new Date(now.getFullYear(), now.getMonth() - i, 1);
+         // the example of date [Mon Mar 01 2024 00:00:00 GMT+0000 (UTC)]
+         const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
+         const savedData = JSON.parse(localStorage.getItem(`budgetData_${monthKey}`)) || {
+            income: 0,
+            expenses: [],
+         };
+
+         // Calculate total expenses for the month
+         const totalExpenses = savedData.expenses.reduce(
+            (sum, data) => sum + (parseFloat(data.amount) || 0),
+            0
+         );
+
+         monthlyData.push({
+            month: monthKey,
+            income: parseFloat(savedData.income) || 0,
+            expenses: totalExpenses,
+         });
+      }
+
+      return monthlyData;
+   }
+
+   function loadLineChart() {
+      const monthlyData = getMonthlyData();
+
+      Highcharts.chart("bottom-chart", {
+         chart: { type: "line" },
+         title: { text: "Monthly Income vs. Expenses" },
+         xAxis: {
+            categories: monthlyData.map((data) => data.month),
+            title: { text: "Month" },
+         },
+         yAxis: {
+            title: { text: "Amount ($)" },
+         },
+         series: [
+            {
+               name: "Income",
+               data: monthlyData.map((data) => data.income), // Income per month
+               color: "#50c878",
+            },
+            {
+               name: "Total Expenses",
+               data: monthlyData.map((data) => data.expenses), // Total expenses per month
+               color: "#ff4d4d",
+            },
+         ],
+      });
+   }
+
    // till here Ayumu
 });

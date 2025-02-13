@@ -1,11 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Contact - Personal Finance Tracker</title>
+      <style>
+         :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #4cc9f0;
+            --background: #26496c;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+         }
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Inter", sans-serif;
+         }
+         body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+         }
+         header {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 90px;
+            background-color: var(--primary);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+         }
+         .wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 1em 2em;
+         }
+         .logo {
+            font-size: 2em;
+            font-weight: bold;
+            color: var(--card-bg);
+            text-decoration: none;
+         }
+         .menu ul {
+            list-style: none;
+            display: flex;
+         }
+         .menu li {
+            padding-left: 1.5em;
+         }
+         .menu a {
+            color: var(--card-bg);
+            text-decoration: none;
+            font-weight: bold;
+         }
+         .container {
+            max-width: 600px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+         }
+         h1 {
+            text-align: center;
+            color: var(--primary);
+         }
+         .form-group {
+            margin-bottom: 1rem;
+         }
+         label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+         }
+         input,
+         textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+         }
+         button {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+         }
+         button:hover {
+            opacity: 0.9;
+         }
+         footer {
+            width: 100%;
+            height: 100px;
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            background: var(--primary);
+            color: var(--card-bg);
+         }
+      </style>
+   </head>
+   <body>
+      <header>
+         <div class="wrapper">
+            <a href="http://127.0.0.1:5500/index.html" class="logo">Personal Finance Tracker</a>
+            <nav class="menu">
+               <ul>
+                  <li><a href="http://127.0.0.1:5500/index.html">Home</a></li>
+                  <li><a class="cta" href="contact.html">Contact</a></li>
+               </ul>
+            </nav>
+         </div>
+      </header>
+      <div class="container">
+         <h1>Contact Us</h1>
+         <form>
+            <div class="form-group">
+               <label for="name">Name:</label>
+               <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+               <label for="email">Email:</label>
+               <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+               <label for="message">Message:</label>
+               <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+         </form>
+      </div>
+      <footer>
+         <p>&copy; 2025 Personal Finance Tracker. All Rights Reserved.</p>
+      </footer>
+   </body>
 </html>
