@@ -88,6 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const chartData = [];
 
       // Calculate total expenses
+      // expenseElements is node list, so convert it to Array to use reduce
       const expenses = Array.from(expenseElements).reduce((total, expense) => {
          return total + (parseFloat(expense.querySelector("input").value) || 0);
       }, 0);
@@ -98,7 +99,8 @@ document.addEventListener("DOMContentLoaded", function () {
          chartData.push({
             name: "Remaining Budget",
             y: remaining,
-            color: "#50c878", // Green color for remaining budget
+            // default color for Remaining Budget
+            color: "#50c878",
          });
       }
 
@@ -124,15 +126,19 @@ document.addEventListener("DOMContentLoaded", function () {
          credits: { enabled: false }, // Removes Highcharts branding
          plotOptions: {
             series: {
+               // option for make pie moving
                allowPointSelect: true,
                cursor: "pointer",
                dataLabels: [
+                  // distance is the option for the length of description
+                  // :,.2f is the format for the number ex. 2,000.00
                   { enabled: true, distance: 20, format: "{point.name}: ${point.y:,.2f}" },
                   {
                      enabled: true,
                      distance: -40,
                      format: "{point.percentage:.1f}%",
                      style: { fontSize: "1.0rem", textOutline: "none", opacity: 0.7 },
+                     // don't show the data percentage is less than 5%
                      filter: { operator: ">", property: "percentage", value: 5 },
                   },
                ],
@@ -215,6 +221,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const monthSelector = document.getElementById("month-selector");
 
       for (let i = -6; i <= 6; i++) {
+         // loop for past and upcoming 6months
          const date = new Date(now.getFullYear(), now.getMonth() + i, 1);
          const monthValue = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
 
@@ -251,6 +258,8 @@ document.addEventListener("DOMContentLoaded", function () {
          const date = new Date(now.getFullYear(), now.getMonth() - i, 1);
          // the example of date [Mon Mar 01 2024 00:00:00 GMT+0000 (UTC)]
          const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
+         // the example of monthKey is 2025-02
+
          const savedData = JSON.parse(localStorage.getItem(`budgetData_${monthKey}`)) || {
             income: 0,
             expenses: [],
@@ -259,6 +268,7 @@ document.addEventListener("DOMContentLoaded", function () {
          // Calculate total expenses for the month
          const totalExpenses = savedData.expenses.reduce(
             (sum, data) => sum + (parseFloat(data.amount) || 0),
+            // the first value of sum
             0
          );
 
