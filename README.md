@@ -19,7 +19,7 @@ This project was created as the final project for Tamwood's Course 3. It is a Pe
    ```
 2. Navigate to the directory:
    ```bash
-   cd FinalProject
+   cd Personal-Finance-Tracker
    ```
 3. Open the `index.html` file in your browser.
 
